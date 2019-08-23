@@ -1,9 +1,9 @@
-FROM golang:1.12.5-alpine3.9 AS builder
+FROM golang:1.12.9-alpine3.10 AS builder
 
 RUN apk --no-cache add git && \
     go get -u github.com/vmware/govmomi/vcsim
 
-FROM alpine:3.9
+FROM alpine:3.10
 
 EXPOSE 8989
 COPY --from=builder /go/bin/vcsim /
